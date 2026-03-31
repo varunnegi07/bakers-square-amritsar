@@ -23,6 +23,10 @@ const caveat = Caveat({
 export const metadata = {
   title: "Baker's Square | Freshly Baked Happiness",
   description: "Indulge in heavenly delights at Baker's Square, Amritsar's premier bakery. Cakes, ice creams, and more.",
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
 }
 
 export default function RootLayout({ children }) {
