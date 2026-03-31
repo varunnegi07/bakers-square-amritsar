@@ -17,72 +17,63 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding: 6rem;
   flex-shrink: 0;
 }
 
 .panelContent {
-  max-width: 900px;
+  max-width: 1100px;
   width: 100%;
 }
 
 .panelNumber {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--color-accent);
-  letter-spacing: 0.2em;
-  margin-bottom: 1rem;
-  opacity: 0.6;
+  letter-spacing: 0.3em;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
 }
 
 .panelTitle {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(3.5rem, 10vw, 7rem);
   color: var(--color-text);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-family: var(--font-display);
   font-weight: 400;
 }
 
 .panelDesc {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--color-text-muted);
-  margin-bottom: 2rem;
-  max-width: 500px;
+  margin-bottom: 3rem;
+  max-width: 550px;
+  font-weight: 300;
 }
 
 /* Ice Cream Grid */
 .flavorsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .flavorCard {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
-  animation-delay: calc(var(--i) * 0.1s);
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  transition: all 0.4s ease;
+  cursor: pointer;
 }
 
 .flavorCard:hover {
   background: rgba(212, 165, 116, 0.15);
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .flavorImageWrapper {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 4/3;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
 }
@@ -91,7 +82,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
 .flavorCard:hover .flavorImage {
@@ -101,19 +92,19 @@
 .flavorInfo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 1.5rem;
 }
 
 .flavorDot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .flavorName {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--color-text);
   font-weight: 500;
 }
@@ -122,73 +113,70 @@
 .cakesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .cakeCard {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
-  animation-delay: calc(var(--i) * 0.15s);
+  transition: all 0.4s ease;
+  cursor: pointer;
 }
 
 .cakeCard:hover {
   background: rgba(212, 165, 116, 0.15);
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .cakeImage {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
 }
 
 .cakeInfo {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .cakeName {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--color-text);
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .cakeDesc {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--color-text-muted);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* Food & Drinks */
 .foodLayout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
   align-items: center;
 }
 
 .foodImage {
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
 }
 
 .mainFoodImage {
   width: 100%;
-  height: 350px;
+  height: 450px;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 24px;
 }
 
 .foodList {
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 .foodColumn {
@@ -196,19 +184,19 @@
 }
 
 .foodColumn h4 {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--color-accent);
-  margin-bottom: 1rem;
-  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
 }
 
 .foodItem {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 0.75rem 0;
+  gap: 1.25rem;
+  padding: 1rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -217,7 +205,7 @@
 }
 
 .foodEmoji {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   flex-shrink: 0;
 }
 
@@ -227,43 +215,34 @@
 }
 
 .foodItemName {
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: var(--color-text);
   font-weight: 500;
 }
 
 .foodItemDesc {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--color-text-muted);
+  margin-top: 0.25rem;
 }
 
 /* Vibe Grid */
 .vibeGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .vibeCard {
   aspect-ratio: 1;
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: scale(0.8);
-  animation: popIn 0.5s ease forwards;
-  animation-delay: calc(var(--i) * 0.1s);
-}
-
-@keyframes popIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  transition: all 0.4s ease;
+  cursor: pointer;
 }
 
 .vibeCard:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   z-index: 10;
 }
 
@@ -271,7 +250,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
 .vibeCard:hover .vibeImage {
@@ -281,18 +260,18 @@
 /* Progress Bar */
 .progressBar {
   position: fixed;
-  right: 2rem;
+  right: 3rem;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
   z-index: 100;
 }
 
 .progressDot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
@@ -300,12 +279,12 @@
 
 .progressDot.active {
   background: var(--color-accent);
-  transform: scale(1.5);
+  transform: scale(1.8);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .panel {
-    padding: 2rem;
+    padding: 4rem;
   }
   
   .flavorsGrid,
@@ -313,9 +292,30 @@
   .vibeGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: 3rem 2rem;
+  }
+  
+  .flavorsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .cakesGrid {
+    grid-template-columns: 1fr;
+  }
   
   .foodLayout {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .vibeGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
   .foodList {
@@ -324,18 +324,6 @@
   }
   
   .progressBar {
-    right: 1rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .flavorsGrid,
-  .cakesGrid,
-  .vibeGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .panelTitle {
-    font-size: 2.5rem;
+    right: 1.5rem;
   }
 }
