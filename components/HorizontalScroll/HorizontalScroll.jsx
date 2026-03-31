@@ -55,16 +55,10 @@ export default function HorizontalScroll() {
             <span className={styles.panelNumber}>01</span>
             <h2 className={styles.panelTitle}>Ice Creams</h2>
             <p className={styles.panelDesc}>13 heavenly flavors crafted with love</p>
-            <div className={styles.flavorsGrid}>
-              {iceCreamFlavors.slice(0, 6).map((flavor, i) => (
-                <div key={flavor.id} className={styles.flavorCard} style={{ '--i': i }}>
-                  <div className={styles.flavorEmojiWrapper}>
-                    <span className={styles.flavorEmoji}>{flavor.emoji}</span>
-                  </div>
-                  <div className={styles.flavorInfo}>
-                    <span className={styles.flavorDot} style={{ background: flavor.color }}></span>
-                    <span className={styles.flavorName}>{flavor.name}</span>
-                  </div>
+            <div className={styles.textList}>
+              {iceCreamFlavors.map((flavor, i) => (
+                <div key={flavor.id} className={styles.textItem} style={{ '--i': i }}>
+                  <span className={styles.textName}>{flavor.name}</span>
                 </div>
               ))}
             </div>
@@ -76,16 +70,10 @@ export default function HorizontalScroll() {
             <span className={styles.panelNumber}>02</span>
             <h2 className={styles.panelTitle}>Cakes</h2>
             <p className={styles.panelDesc}>Every celebration deserves a masterpiece</p>
-            <div className={styles.cakesGrid}>
+            <div className={styles.textList}>
               {signatureCakes.map((cake, i) => (
-                <div key={cake.id} className={styles.cakeCard} style={{ '--i': i }}>
-                  <div className={styles.cakeEmojiWrapper}>
-                    <span className={styles.cakeEmoji}>{cake.emoji}</span>
-                  </div>
-                  <div className={styles.cakeInfo}>
-                    <span className={styles.cakeName}>{cake.name}</span>
-                    <span className={styles.cakeDesc}>{cake.description}</span>
-                  </div>
+                <div key={cake.id} className={styles.textItem} style={{ '--i': i }}>
+                  <span className={styles.textName}>{cake.name}</span>
                 </div>
               ))}
             </div>
@@ -97,39 +85,22 @@ export default function HorizontalScroll() {
             <span className={styles.panelNumber}>03</span>
             <h2 className={styles.panelTitle}>Food & Drinks</h2>
             <p className={styles.panelDesc}>Savor every bite, sip every moment</p>
-            <div className={styles.foodLayout}>
-              <div className={styles.foodShowcase}>
-                <div className={styles.foodEmojiDisplay}>
-                  <span>🍔</span>
-                  <span>🍕</span>
-                  <span>🥘</span>
-                </div>
+            <div className={styles.foodColumns}>
+              <div className={styles.foodColumn}>
+                <h4 className={styles.columnTitle}>Savory</h4>
+                {foodAndDrink.snacks.map((item, i) => (
+                  <div key={i} className={styles.textItem} style={{ '--i': i }}>
+                    <span className={styles.textName}>{item.name}</span>
+                  </div>
+                ))}
               </div>
-              <div className={styles.foodList}>
-                <div className={styles.foodColumn}>
-                  <h4>Savory</h4>
-                  {foodAndDrink.snacks.map((item, i) => (
-                    <div key={i} className={styles.foodItem}>
-                      <span className={styles.foodEmoji}>{item.emoji}</span>
-                      <div className={styles.foodItemContent}>
-                        <span className={styles.foodItemName}>{item.name}</span>
-                        <span className={styles.foodItemDesc}>{item.description}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className={styles.foodColumn}>
-                  <h4>Drinks</h4>
-                  {foodAndDrink.beverages.map((item, i) => (
-                    <div key={i} className={styles.foodItem}>
-                      <span className={styles.foodEmoji}>{item.emoji}</span>
-                      <div className={styles.foodItemContent}>
-                        <span className={styles.foodItemName}>{item.name}</span>
-                        <span className={styles.foodItemDesc}>{item.description}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className={styles.foodColumn}>
+                <h4 className={styles.columnTitle}>Drinks</h4>
+                {foodAndDrink.beverages.map((item, i) => (
+                  <div key={i} className={styles.textItem} style={{ '--i': i }}>
+                    <span className={styles.textName}>{item.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -140,12 +111,13 @@ export default function HorizontalScroll() {
             <span className={styles.panelNumber}>04</span>
             <h2 className={styles.panelTitle}>The Vibe</h2>
             <p className={styles.panelDesc}>Where sweetness meets hospitality</p>
-            <div className={styles.vibeGrid}>
-              {vibesEmojis.slice(0, 6).map((emoji, i) => (
-                <div key={i} className={styles.vibeCard} style={{ '--i': i }}>
-                  <span className={styles.vibeEmoji}>{emoji}</span>
-                </div>
-              ))}
+            <div className={styles.vibeText}>
+              <span>Fresh Baked</span>
+              <span>Coffee & WiFi</span>
+              <span>Cozy Seating</span>
+              <span>Family Friendly</span>
+              <span>Custom Orders</span>
+              <span>Delivery Available</span>
             </div>
           </div>
         </div>
