@@ -82,7 +82,11 @@ export default function Hero() {
 
   return (
     <section id="home" ref={containerRef} className={styles.hero}>
-      <div className={styles.cakeImage} />
+      <img 
+        src="/cake-background.jpeg" 
+        alt="Cake" 
+        className={styles.cakeImage}
+      />
       
       <div className={styles.canvasWrapper}>
         <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
