@@ -1,14 +1,15 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { Canvas } from '@react-three/fiber'
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './page.module.css'
 
+import HeroScene from '@/components/Hero/HeroScene'
 import HeroContent from '@/components/Hero/HeroContent'
 import Preloader from '@/components/Preloader/Preloader'
-import FloatingCake from '@/components/FloatingCake/FloatingCake'
 import HorizontalScroll from '@/components/HorizontalScroll/HorizontalScroll'
 import TextReveal from '@/components/TextReveal/TextReveal'
 import LocationSection from '@/components/Location/LocationSection'
@@ -19,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const mainRef = useRef(null)
 
   useEffect(() => {
@@ -46,6 +48,15 @@ export default function Home() {
 
     gsap.ticker.lagSmoothing(0)
 
+    ScrollTrigger.create({
+      trigger: mainRef.current,
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: (self) => {
+        setScrollProgress(self.progress)
+      }
+    })
+
     return () => {
       lenis.destroy()
       gsap.ticker.remove(lenis.raf)
@@ -61,9 +72,12 @@ export default function Home() {
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       
       <main ref={mainRef} className={`${styles.main} ${!isLoading ? styles.mainLoaded : ''}`}>
-        <FloatingCake />
-        
         <section className={styles.heroSection}>
+          <div className={styles.heroCanvas}>
+            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+              <HeroScene scrollProgress={scrollProgress} />
+            </Canvas>
+          </div>
           <HeroContent />
         </section>
 

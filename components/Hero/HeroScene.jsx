@@ -68,24 +68,15 @@ function RealisticCake({ scrollProgress }) {
   return (
     <Float speed={0.8} rotationIntensity={0.1} floatIntensity={0.2}>
       <group ref={groupRef} scale={0.7}>
-        {/* Base tier - Chocolate */}
         <CakeTier radius={1.4} height={0.6} y={-0.9} color="#5D3A1A" topColor="#8B5A2B" />
-        
-        {/* Second tier - Vanilla */}
         <CakeTier radius={1.1} height={0.5} y={-0.35} color="#F5DEB3" topColor="#FFF8DC" />
-        
-        {/* Third tier - Pink */}
         <CakeTier radius={0.85} height={0.45} y={0.1} color="#FFB6C1" topColor="#FFC0CB" />
-        
-        {/* Top tier - White */}
         <CakeTier radius={0.6} height={0.4} y={0.5} color="#FFF5EE" topColor="#FFFFFF" />
         
-        {/* Frosting layers */}
         <FrostingLayer radius={1.35} y={-0.55} color="#5D3A1A" />
         <FrostingLayer radius={1.05} y={-0.05} color="#FFB6C1" />
         <FrostingLayer radius={0.8} y={0.4} color="#FFF5EE" />
         
-        {/* Cherry on top */}
         <group position={[0, 0.85, 0]}>
           <mesh>
             <sphereGeometry args={[0.15, 16, 16]} />
@@ -97,12 +88,10 @@ function RealisticCake({ scrollProgress }) {
           </mesh>
         </group>
         
-        {/* Candles */}
         <Candle position={[0.3, 0.75, 0]} />
         <Candle position={[-0.25, 0.72, 0.15]} />
         <Candle position={[0.1, 0.78, -0.3]} />
         
-        {/* Sprinkle decorations */}
         <Decoration position={[0.8, 0.55, 0.4]} color="#FF6B6B" />
         <Decoration position={[-0.7, 0.2, 0.5]} color="#FFD93D" />
         <Decoration position={[0.5, 0.15, -0.6]} color="#77DD77" />
@@ -112,7 +101,6 @@ function RealisticCake({ scrollProgress }) {
         <Decoration position={[0.7, -0.6, -0.3]} color="#FFFFFF" />
         <Decoration position={[-0.3, -0.4, 0.9]} color="#FF69B4" />
         
-        {/* Gold rim decorations */}
         {[-0.7, 0, 0.7].map((x, i) => (
           <mesh key={i} position={[x, -0.55, 0]} rotation={[Math.PI/2, 0, 0]}>
             <torusGeometry args={[0.05, 0.02, 8, 16]} />
@@ -120,7 +108,6 @@ function RealisticCake({ scrollProgress }) {
           </mesh>
         ))}
         
-        {/* Bottom plate */}
         <mesh position={[0, -1.2, 0]}>
           <cylinderGeometry args={[1.8, 1.8, 0.08, 64]} />
           <meshStandardMaterial color="#C0C0C0" metalness={0.9} roughness={0.1} />
