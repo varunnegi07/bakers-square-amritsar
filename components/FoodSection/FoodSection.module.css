@@ -1,0 +1,106 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  background: #0a0a0a;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #D4A574;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4rem;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.columnTitle {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.columnTitle span {
+  font-size: 2rem;
+}
+
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(212, 165, 116, 0.3);
+  transform: translateX(8px);
+}
+
+.emoji {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 1.5rem;
+  }
+  
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

@@ -21,14 +21,14 @@ const caveat = Caveat({
 })
 
 export const metadata = {
-  title: "Baker's Square | Amritsar's Premier Bakery",
-  description: "Indulge in heavenly delights at Baker's Square, where every treat is a masterpiece. Cakes, ice creams, and more in Amritsar.",
+  title: "Baker's Square | Freshly Baked Happiness",
+  description: "Indulge in heavenly delights at Baker's Square, Amritsar's premier bakery. Cakes, ice creams, and more.",
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${caveat.variable}`}>
-      <body>{children}</body>
+      <body className="bg-black text-white antialiased">{children}</body>
     </html>
   )
 }

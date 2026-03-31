@@ -1,72 +1,52 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
-import styles from './Preloader.module.css'
-
-const bakeryItems = ['🍰', '🎂', '🧁', '🍩', '🍪', '🥐', '🥨', '🍮', '🍦', '🍫']
+import { useState, useEffect } from 'react';
+import styles from './Preloader.module.css';
+import { businessInfo } from '../../data/content';
 
 export default function Preloader({ onComplete }) {
-  const [visibleItems, setVisibleItems] = useState([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isComplete, setIsComplete] = useState(false)
-  const containerRef = useRef(null)
+  const [progress, setProgress] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentIndex < bakeryItems.length) {
-        setVisibleItems(prev => [...prev, bakeryItems[currentIndex]])
-        setCurrentIndex(prev => prev + 1)
-      } else {
-        clearInterval(interval)
+    const duration = 2000;
+    const interval = 20;
+    const steps = duration / interval;
+    const increment = 100 / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= 100) {
+        current = 100;
+        setProgress(100);
+        clearInterval(timer);
         setTimeout(() => {
-          setIsComplete(true)
-          setTimeout(() => {
-            onComplete()
-          }, 800)
-        }, 500)
+          setIsLoaded(true);
+          setTimeout(() => onComplete?.(), 600);
+        }, 400);
+      } else {
+        setProgress(current);
       }
-    }, 150)
+    }, interval);
 
-    return () => clearInterval(interval)
-  }, [currentIndex, onComplete])
-
-  useEffect(() => {
-    if (isComplete && containerRef.current) {
-      gsap.to(containerRef.current, {
-        opacity: 0,
-        y: '-100%',
-        duration: 0.8,
-        ease: 'power3.inOut'
-      })
-    }
-  }, [isComplete])
+    return () => clearInterval(timer);
+  }, [onComplete]);
 
   return (
-    <div ref={containerRef} className={styles.preloader}>
-      <div className={styles.logoGrid}>
-        {visibleItems.map((item, index) => (
-          <div 
-            key={index} 
-            className={styles.logoItem}
-            style={{ 
-              '--index': index,
-              '--delay': `${index * 0.1}s`
-            }}
-          >
-            <span className={styles.logoEmoji}>{item}</span>
+    <div className={`${styles.preloader} ${isLoaded ? styles.fadeOut : ''}`}>
+      <div className={styles.content}>
+        <div className={styles.emoji}>🎂</div>
+        <div className={styles.logo}>{businessInfo.name}</div>
+        <div className={styles.tagline}>{businessInfo.tagline}</div>
+        
+        <div className={styles.progressContainer}>
+          <div className={styles.progressBar}>
+            <div className={styles.progressFill} style={{ width: `${progress}%` }} />
           </div>
-        ))}
+          <span className={styles.percentage}>{Math.round(progress)}%</span>
+        </div>
       </div>
-      <div className={styles.loadingBar}>
-        <div 
-          className={styles.loadingProgress}
-          style={{ width: `${(currentIndex / bakeryItems.length) * 100}%` }}
-        />
-      </div>
-      <p className={styles.loadingText}>
-        Loading sweet treats...
-      </p>
     </div>
-  )
+  );
 }
