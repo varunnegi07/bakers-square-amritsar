@@ -22,7 +22,7 @@
 }
 
 .panelContent {
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
 }
 
@@ -46,25 +46,21 @@
 .panelDesc {
   font-size: 1.25rem;
   color: var(--color-text-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   max-width: 500px;
 }
 
-.flavorsList {
+/* Ice Cream Grid */
+.flavorsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.flavorItem {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  font-size: 0.95rem;
-  color: var(--color-text);
+.flavorCard {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  overflow: hidden;
   transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
@@ -79,17 +75,50 @@
   }
 }
 
-.flavorItem:hover {
-  background: rgba(212, 165, 116, 0.2);
+.flavorCard:hover {
+  background: rgba(212, 165, 116, 0.15);
+  transform: translateY(-5px);
+}
+
+.flavorImageWrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.flavorImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.flavorCard:hover .flavorImage {
+  transform: scale(1.1);
+}
+
+.flavorInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
 }
 
 .flavorDot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
+.flavorName {
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Cakes Grid */
 .cakesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -97,12 +126,9 @@
 }
 
 .cakeCard {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
+  overflow: hidden;
   transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
@@ -111,22 +137,62 @@
 }
 
 .cakeCard:hover {
-  background: rgba(212, 165, 116, 0.2);
+  background: rgba(212, 165, 116, 0.15);
   transform: translateY(-5px);
 }
 
-.cakeEmoji {
-  font-size: 2rem;
+.cakeImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cakeInfo {
+  padding: 1rem;
 }
 
 .cakeName {
+  display: block;
   font-size: 1.1rem;
   color: var(--color-text);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.cakeDesc {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Food & Drinks */
+.foodLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.foodImage {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.mainFoodImage {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .foodList {
   display: flex;
-  gap: 4rem;
+  gap: 3rem;
+}
+
+.foodColumn {
+  flex: 1;
 }
 
 .foodColumn h4 {
@@ -139,8 +205,9 @@
 }
 
 .foodItem {
-  font-size: 1.1rem;
-  color: var(--color-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 0.75rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -149,6 +216,28 @@
   border-bottom: none;
 }
 
+.foodEmoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.foodItemContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.foodItemName {
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.foodItemDesc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Vibe Grid */
 .vibeGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -157,12 +246,8 @@
 
 .vibeCard {
   aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
+  overflow: hidden;
   transition: all 0.3s ease;
   opacity: 0;
   transform: scale(0.8);
@@ -178,10 +263,22 @@
 }
 
 .vibeCard:hover {
-  background: rgba(212, 165, 116, 0.2);
   transform: scale(1.05);
+  z-index: 10;
 }
 
+.vibeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.vibeCard:hover .vibeImage {
+  transform: scale(1.15);
+}
+
+/* Progress Bar */
 .progressBar {
   position: fixed;
   right: 2rem;
@@ -211,15 +308,19 @@
     padding: 2rem;
   }
   
-  .flavorsList,
+  .flavorsGrid,
   .cakesGrid,
   .vibeGrid {
     grid-template-columns: repeat(2, 1fr);
   }
   
+  .foodLayout {
+    grid-template-columns: 1fr;
+  }
+  
   .foodList {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   
   .progressBar {
@@ -228,7 +329,7 @@
 }
 
 @media (max-width: 600px) {
-  .flavorsList,
+  .flavorsGrid,
   .cakesGrid,
   .vibeGrid {
     grid-template-columns: 1fr;
