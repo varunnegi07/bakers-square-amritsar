@@ -1,0 +1,207 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  background: var(--color-bg);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.subtitle {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--color-text);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.mapContainer {
+  position: relative;
+}
+
+.mapPlaceholder {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mapGrid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 2px;
+  padding: 2px;
+  opacity: 0.3;
+}
+
+.gridCell {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.mapPin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pinIcon {
+  font-size: 3rem;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.pinPulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(212, 165, 116, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+.mapLabel {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mapLabel span {
+  display: block;
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.mapLabel small {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.infoCard:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 165, 116, 0.3);
+}
+
+.infoIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.infoContent h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.infoContent p {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.infoContent a {
+  color: var(--color-accent);
+  transition: color 0.3s ease;
+}
+
+.infoContent a:hover {
+  color: var(--color-accent-light);
+}
+
+.directionsBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.directionsBtn:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .mapPlaceholder {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
