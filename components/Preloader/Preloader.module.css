@@ -7,58 +7,62 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.8s ease;
+  gap: 2rem;
 }
 
-.preloader.hidden {
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  max-width: 300px;
+}
+
+.logoItem {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 165, 116, 0.1);
+  border-radius: 12px;
   opacity: 0;
-  pointer-events: none;
+  transform: scale(0);
+  animation: popIn 0.4s ease forwards;
+  animation-delay: var(--delay);
 }
 
-.canvasWrapper {
-  position: absolute;
-  inset: 0;
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
 }
 
-.content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  margin-top: 2rem;
+.logoEmoji {
+  font-size: 1.5rem;
 }
 
-.title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--color-accent);
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.progressBar {
+.loadingBar {
   width: 200px;
-  height: 3px;
+  height: 2px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
-  margin: 0 auto;
 }
 
-.progressFill {
+.loadingProgress {
   height: 100%;
   background: var(--color-accent);
   transition: width 0.3s ease;
-  border-radius: 3px;
 }
 
-.percent {
+.loadingText {
   font-size: 0.85rem;
   color: var(--color-text-muted);
-  margin-top: 0.75rem;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
