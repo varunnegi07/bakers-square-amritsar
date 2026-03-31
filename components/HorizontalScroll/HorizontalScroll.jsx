@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './HorizontalScroll.module.css'
-import { iceCreamFlavors, signatureCakes, foodAndDrink, vibesImages } from '@/data/content'
+import { iceCreamFlavors, signatureCakes, foodAndDrink, vibesEmojis } from '@/data/content'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -58,12 +58,8 @@ export default function HorizontalScroll() {
             <div className={styles.flavorsGrid}>
               {iceCreamFlavors.slice(0, 6).map((flavor, i) => (
                 <div key={flavor.id} className={styles.flavorCard} style={{ '--i': i }}>
-                  <div className={styles.flavorImageWrapper}>
-                    <img 
-                      src={flavor.image} 
-                      alt={flavor.name}
-                      className={styles.flavorImage}
-                    />
+                  <div className={styles.flavorEmojiWrapper}>
+                    <span className={styles.flavorEmoji}>{flavor.emoji}</span>
                   </div>
                   <div className={styles.flavorInfo}>
                     <span className={styles.flavorDot} style={{ background: flavor.color }}></span>
@@ -83,11 +79,9 @@ export default function HorizontalScroll() {
             <div className={styles.cakesGrid}>
               {signatureCakes.map((cake, i) => (
                 <div key={cake.id} className={styles.cakeCard} style={{ '--i': i }}>
-                  <img 
-                    src={cake.image} 
-                    alt={cake.name}
-                    className={styles.cakeImage}
-                  />
+                  <div className={styles.cakeEmojiWrapper}>
+                    <span className={styles.cakeEmoji}>{cake.emoji}</span>
+                  </div>
                   <div className={styles.cakeInfo}>
                     <span className={styles.cakeName}>{cake.name}</span>
                     <span className={styles.cakeDesc}>{cake.description}</span>
@@ -104,12 +98,12 @@ export default function HorizontalScroll() {
             <h2 className={styles.panelTitle}>Food & Drinks</h2>
             <p className={styles.panelDesc}>Savor every bite, sip every moment</p>
             <div className={styles.foodLayout}>
-              <div className={styles.foodImage}>
-                <img 
-                  src={foodAndDrink.images[0]} 
-                  alt="Food and Drinks"
-                  className={styles.mainFoodImage}
-                />
+              <div className={styles.foodShowcase}>
+                <div className={styles.foodEmojiDisplay}>
+                  <span>🍔</span>
+                  <span>🍕</span>
+                  <span>🥘</span>
+                </div>
               </div>
               <div className={styles.foodList}>
                 <div className={styles.foodColumn}>
@@ -147,9 +141,9 @@ export default function HorizontalScroll() {
             <h2 className={styles.panelTitle}>The Vibe</h2>
             <p className={styles.panelDesc}>Where sweetness meets hospitality</p>
             <div className={styles.vibeGrid}>
-              {vibesImages.slice(0, 6).map((img, i) => (
+              {vibesEmojis.slice(0, 6).map((emoji, i) => (
                 <div key={i} className={styles.vibeCard} style={{ '--i': i }}>
-                  <img src={img} alt={`Vibe ${i + 1}`} className={styles.vibeImage} />
+                  <span className={styles.vibeEmoji}>{emoji}</span>
                 </div>
               ))}
             </div>

@@ -61,39 +61,39 @@
 .flavorCard {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 24px;
-  overflow: hidden;
+  padding: 2rem;
+  text-align: center;
   transition: all 0.4s ease;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .flavorCard:hover {
   background: rgba(212, 165, 116, 0.15);
   transform: translateY(-8px);
+  border-color: rgba(212, 165, 116, 0.3);
 }
 
-.flavorImageWrapper {
+.flavorEmojiWrapper {
   width: 100%;
-  aspect-ratio: 4/3;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.2);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
 }
 
-.flavorImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.flavorCard:hover .flavorImage {
-  transform: scale(1.1);
+.flavorEmoji {
+  font-size: 5rem;
 }
 
 .flavorInfo {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
 .flavorDot {
@@ -119,24 +119,36 @@
 .cakeCard {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 24px;
-  overflow: hidden;
+  padding: 2.5rem;
+  text-align: center;
   transition: all 0.4s ease;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .cakeCard:hover {
   background: rgba(212, 165, 116, 0.15);
   transform: translateY(-8px);
+  border-color: rgba(212, 165, 116, 0.3);
 }
 
-.cakeImage {
+.cakeEmojiWrapper {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.cakeEmoji {
+  font-size: 6rem;
 }
 
 .cakeInfo {
-  padding: 1.5rem;
+  padding: 0;
 }
 
 .cakeName {
@@ -157,21 +169,38 @@
 /* Food & Drinks */
 .foodLayout {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
 }
 
-.foodImage {
-  border-radius: 24px;
-  overflow: hidden;
+.foodShowcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.mainFoodImage {
-  width: 100%;
-  height: 450px;
-  object-fit: cover;
-  border-radius: 24px;
+.foodEmojiDisplay {
+  display: flex;
+  gap: 2rem;
+}
+
+.foodEmojiDisplay span {
+  font-size: 6rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.foodEmojiDisplay span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.foodEmojiDisplay span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 .foodList {
@@ -230,31 +259,28 @@
 .vibeGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .vibeCard {
   aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 24px;
-  overflow: hidden;
   transition: all 0.4s ease;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .vibeCard:hover {
-  transform: scale(1.03);
-  z-index: 10;
+  background: rgba(212, 165, 116, 0.15);
+  transform: scale(1.05);
 }
 
-.vibeImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.vibeCard:hover .vibeImage {
-  transform: scale(1.15);
+.vibeEmoji {
+  font-size: 5rem;
 }
 
 /* Progress Bar */
@@ -321,6 +347,10 @@
   .foodList {
     flex-direction: column;
     gap: 1.5rem;
+  }
+  
+  .foodEmojiDisplay span {
+    font-size: 4rem;
   }
   
   .progressBar {
