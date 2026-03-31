@@ -76,6 +76,11 @@ export default function TextReveal() {
           ))}
         </div>
 
+        <div className={styles.brandHeading}>
+          <h2>Baker's Square</h2>
+          <p>Amritsar's Premier Bakery Since 2015</p>
+        </div>
+
         <div className={styles.features}>
           {featureTexts.map((item, i) => (
             <div 

@@ -13,6 +13,26 @@
   width: 100%;
 }
 
+.brandHeading {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.brandHeading h2 {
+  font-size: clamp(4rem, 15vw, 10rem);
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.brandHeading p {
+  font-size: 1.5rem;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
 .revealText {
   text-align: center;
   margin-bottom: 8rem;
