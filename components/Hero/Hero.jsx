@@ -37,19 +37,111 @@ function FloatingBakeryItem({ emoji, index }) {
   )
 }
 
+function CakeModel() {
+  const groupRef = useRef()
+  const secondTierRef = useRef()
+  const topTierRef = useRef()
+  
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.05
+    }
+    if (secondTierRef.current) {
+      secondTierRef.current.rotation.y = -state.clock.elapsedTime * 0.1
+    }
+    if (topTierRef.current) {
+      topTierRef.current.rotation.y = state.clock.elapsedTime * 0.15
+    }
+  })
+
+  return (
+    <Float speed={0.8} rotationIntensity={0.1} floatIntensity={0.2}>
+      <group ref={groupRef} scale={0.5} position={[0, -1.5, -1]}>
+        <mesh position={[0, -1.8, 0]}>
+          <cylinderGeometry args={[2.2, 2.4, 0.8, 32]} />
+          <meshStandardMaterial color="#8B4513" roughness={0.4} />
+        </mesh>
+        
+        <mesh position={[0, -1.4, 0]}>
+          <cylinderGeometry args={[2.0, 2.2, 0.3, 32]} />
+          <meshStandardMaterial color="#FFB6C1" roughness={0.3} />
+        </mesh>
+        
+        <group ref={secondTierRef}>
+          <mesh position={[0, -0.4, 0]}>
+            <cylinderGeometry args={[1.5, 1.7, 0.8, 32]} />
+            <meshStandardMaterial color="#8B4513" roughness={0.4} />
+          </mesh>
+          
+          <mesh position={[0, 0, 0]}>
+            <cylinderGeometry args={[1.3, 1.5, 0.3, 32]} />
+            <meshStandardMaterial color="#FFB6C1" roughness={0.3} />
+          </mesh>
+        </group>
+        
+        <group ref={topTierRef}>
+          <mesh position={[0, 1.0, 0]}>
+            <cylinderGeometry args={[0.9, 1.1, 0.7, 32]} />
+            <meshStandardMaterial color="#8B4513" roughness={0.4} />
+          </mesh>
+          
+          <mesh position={[0, 1.4, 0]}>
+            <cylinderGeometry args={[0.7, 0.9, 0.3, 32]} />
+            <meshStandardMaterial color="#FFB6C1" roughness={0.3} />
+          </mesh>
+          
+          <mesh position={[0, 1.85, 0]}>
+            <sphereGeometry args={[0.25, 16, 16]} />
+            <meshStandardMaterial color="#DC143C" roughness={0.3} />
+          </mesh>
+        </group>
+        
+        {[-1.8, 0, 1.8].map((x, i) => (
+          <mesh key={i} position={[x, -1.8, 0]}>
+            <sphereGeometry args={[0.15, 8, 8]} />
+            <meshStandardMaterial color="#FFD700" metalness={0.6} roughness={0.3} />
+          </mesh>
+        ))}
+        
+        {[-1.0, 0, 1.0].map((x, i) => (
+          <mesh key={i} position={[x, -0.4, 0]}>
+            <sphereGeometry args={[0.12, 8, 8]} />
+            <meshStandardMaterial color="#FFD700" metalness={0.6} roughness={0.3} />
+          </mesh>
+        ))}
+        
+        {[-0.5, 0.5].map((x, i) => (
+          <mesh key={i} position={[x, 1.0, 0]}>
+            <sphereGeometry args={[0.1, 8, 8]} />
+            <meshStandardMaterial color="#FFD700" metalness={0.6} roughness={0.3} />
+          </mesh>
+        ))}
+        
+        <mesh position={[0, -2.2, 0]}>
+          <cylinderGeometry args={[2.6, 2.6, 0.15, 32]} />
+          <meshStandardMaterial color="#654321" roughness={0.5} />
+        </mesh>
+      </group>
+    </Float>
+  )
+}
+
 function Scene() {
   return (
     <>
-      <ambientLight intensity={0.4} />
+      <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={0.8} />
       <directionalLight position={[-5, 3, -5]} intensity={0.3} color="#FFD93D" />
       <pointLight position={[0, 2, 4]} intensity={0.6} color="#FFB6C1" />
+      <spotLight position={[0, 5, 0]} intensity={0.4} angle={0.5} penumbra={1} />
+      
+      <CakeModel />
       
       {floatingElements.slice(0, 8).map((emoji, i) => (
         <FloatingBakeryItem key={i} emoji={emoji} index={i} />
       ))}
       
-      <fog attach="fog" args={['#000000', 5, 15]} />
+      <fog attach="fog" args={['#0a0a0a', 5, 20]} />
     </>
   )
 }
@@ -82,14 +174,8 @@ export default function Hero() {
 
   return (
     <section id="home" ref={containerRef} className={styles.hero}>
-      <img 
-        src="/cake-background.jpeg" 
-        alt="Cake" 
-        className={styles.cakeImage}
-      />
-      
       <div className={styles.canvasWrapper}>
-        <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+        <Canvas camera={{ position: [0, 0, 7], fov: 45 }}>
           <Scene />
         </Canvas>
       </div>
