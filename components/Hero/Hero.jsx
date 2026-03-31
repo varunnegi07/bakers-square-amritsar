@@ -143,17 +143,6 @@ export default function Hero() {
       '-=0.4'
     )
 
-    gsap.to(titleRef.current, {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1,
-      },
-      y: -100,
-      opacity: 0
-    })
-
   }, [])
 
   return (
