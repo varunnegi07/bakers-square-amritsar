@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, Text } from '@react-three/drei'
+import * as THREE from 'three'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { businessInfo, floatingElements } from '@/data/content'
@@ -58,68 +59,180 @@ function CakeModel() {
     <Float speed={0.8} rotationIntensity={0.1} floatIntensity={0.2}>
       <group ref={groupRef} scale={0.5} position={[0, -1.5, -1]}>
         <mesh position={[0, -1.8, 0]}>
-          <cylinderGeometry args={[2.2, 2.4, 0.8, 32]} />
-          <meshStandardMaterial color="#8B4513" roughness={0.4} />
+          <cylinderGeometry args={[2.2, 2.4, 0.8, 64]} />
+          <meshPhysicalMaterial 
+            color="#8B4513"
+            roughness={0.1}
+            metalness={0.1}
+            transmission={0.6}
+            thickness={1.5}
+            ior={1.5}
+            clearcoat={1}
+            clearcoatRoughness={0.1}
+            envMapIntensity={1}
+          />
         </mesh>
         
         <mesh position={[0, -1.4, 0]}>
-          <cylinderGeometry args={[2.0, 2.2, 0.3, 32]} />
-          <meshStandardMaterial color="#FFB6C1" roughness={0.3} />
+          <cylinderGeometry args={[2.0, 2.2, 0.3, 64]} />
+          <meshPhysicalMaterial 
+            color="#FFB6C1"
+            roughness={0.05}
+            metalness={0}
+            transmission={0.9}
+            thickness={0.5}
+            ior={1.4}
+            clearcoat={1}
+            clearcoatRoughness={0}
+            envMapIntensity={1.5}
+            transparent
+            opacity={0.8}
+          />
         </mesh>
         
         <group ref={secondTierRef}>
           <mesh position={[0, -0.4, 0]}>
-            <cylinderGeometry args={[1.5, 1.7, 0.8, 32]} />
-            <meshStandardMaterial color="#8B4513" roughness={0.4} />
+            <cylinderGeometry args={[1.5, 1.7, 0.8, 64]} />
+            <meshPhysicalMaterial 
+              color="#8B4513"
+              roughness={0.1}
+              metalness={0.1}
+              transmission={0.6}
+              thickness={1.5}
+              ior={1.5}
+              clearcoat={1}
+              clearcoatRoughness={0.1}
+              envMapIntensity={1}
+            />
           </mesh>
           
           <mesh position={[0, 0, 0]}>
-            <cylinderGeometry args={[1.3, 1.5, 0.3, 32]} />
-            <meshStandardMaterial color="#FFB6C1" roughness={0.3} />
+            <cylinderGeometry args={[1.3, 1.5, 0.3, 64]} />
+            <meshPhysicalMaterial 
+              color="#FFB6C1"
+              roughness={0.05}
+              metalness={0}
+              transmission={0.9}
+              thickness={0.5}
+              ior={1.4}
+              clearcoat={1}
+              clearcoatRoughness={0}
+              envMapIntensity={1.5}
+              transparent
+              opacity={0.8}
+            />
           </mesh>
         </group>
         
         <group ref={topTierRef}>
           <mesh position={[0, 1.0, 0]}>
-            <cylinderGeometry args={[0.9, 1.1, 0.7, 32]} />
-            <meshStandardMaterial color="#8B4513" roughness={0.4} />
+            <cylinderGeometry args={[0.9, 1.1, 0.7, 64]} />
+            <meshPhysicalMaterial 
+              color="#8B4513"
+              roughness={0.1}
+              metalness={0.1}
+              transmission={0.6}
+              thickness={1.5}
+              ior={1.5}
+              clearcoat={1}
+              clearcoatRoughness={0.1}
+              envMapIntensity={1}
+            />
           </mesh>
           
           <mesh position={[0, 1.4, 0]}>
-            <cylinderGeometry args={[0.7, 0.9, 0.3, 32]} />
-            <meshStandardMaterial color="#FFB6C1" roughness={0.3} />
+            <cylinderGeometry args={[0.7, 0.9, 0.3, 64]} />
+            <meshPhysicalMaterial 
+              color="#FFB6C1"
+              roughness={0.05}
+              metalness={0}
+              transmission={0.9}
+              thickness={0.5}
+              ior={1.4}
+              clearcoat={1}
+              clearcoatRoughness={0}
+              envMapIntensity={1.5}
+              transparent
+              opacity={0.8}
+            />
           </mesh>
           
           <mesh position={[0, 1.85, 0]}>
-            <sphereGeometry args={[0.25, 16, 16]} />
-            <meshStandardMaterial color="#DC143C" roughness={0.3} />
+            <sphereGeometry args={[0.25, 32, 32]} />
+            <meshPhysicalMaterial 
+              color="#DC143C"
+              roughness={0.1}
+              metalness={0}
+              transmission={0.7}
+              thickness={0.3}
+              ior={1.5}
+              clearcoat={1}
+              clearcoatRoughness={0}
+              envMapIntensity={1}
+            />
           </mesh>
         </group>
         
         {[-1.8, 0, 1.8].map((x, i) => (
           <mesh key={i} position={[x, -1.8, 0]}>
-            <sphereGeometry args={[0.15, 8, 8]} />
-            <meshStandardMaterial color="#FFD700" metalness={0.6} roughness={0.3} />
+            <sphereGeometry args={[0.15, 16, 16]} />
+            <meshPhysicalMaterial 
+              color="#FFD700"
+              roughness={0.1}
+              metalness={0.9}
+              transmission={0.3}
+              thickness={0.2}
+              ior={2.4}
+              clearcoat={1}
+              envMapIntensity={1.5}
+            />
           </mesh>
         ))}
         
         {[-1.0, 0, 1.0].map((x, i) => (
           <mesh key={i} position={[x, -0.4, 0]}>
-            <sphereGeometry args={[0.12, 8, 8]} />
-            <meshStandardMaterial color="#FFD700" metalness={0.6} roughness={0.3} />
+            <sphereGeometry args={[0.12, 16, 16]} />
+            <meshPhysicalMaterial 
+              color="#FFD700"
+              roughness={0.1}
+              metalness={0.9}
+              transmission={0.3}
+              thickness={0.2}
+              ior={2.4}
+              clearcoat={1}
+              envMapIntensity={1.5}
+            />
           </mesh>
         ))}
         
         {[-0.5, 0.5].map((x, i) => (
           <mesh key={i} position={[x, 1.0, 0]}>
-            <sphereGeometry args={[0.1, 8, 8]} />
-            <meshStandardMaterial color="#FFD700" metalness={0.6} roughness={0.3} />
+            <sphereGeometry args={[0.1, 16, 16]} />
+            <meshPhysicalMaterial 
+              color="#FFD700"
+              roughness={0.1}
+              metalness={0.9}
+              transmission={0.3}
+              thickness={0.2}
+              ior={2.4}
+              clearcoat={1}
+              envMapIntensity={1.5}
+            />
           </mesh>
         ))}
         
         <mesh position={[0, -2.2, 0]}>
-          <cylinderGeometry args={[2.6, 2.6, 0.15, 32]} />
-          <meshStandardMaterial color="#654321" roughness={0.5} />
+          <cylinderGeometry args={[2.6, 2.6, 0.15, 64]} />
+          <meshPhysicalMaterial 
+            color="#654321"
+            roughness={0.2}
+            metalness={0.1}
+            transmission={0.4}
+            thickness={0.3}
+            ior={1.5}
+            clearcoat={1}
+            clearcoatRoughness={0.1}
+          />
         </mesh>
       </group>
     </Float>
@@ -134,6 +247,8 @@ function Scene() {
       <directionalLight position={[-5, 3, -5]} intensity={0.3} color="#FFD93D" />
       <pointLight position={[0, 2, 4]} intensity={0.6} color="#FFB6C1" />
       <spotLight position={[0, 5, 0]} intensity={0.4} angle={0.5} penumbra={1} />
+      <pointLight position={[-3, 0, 2]} intensity={0.3} color="#ffffff" />
+      <pointLight position={[3, 0, 2]} intensity={0.3} color="#ffffff" />
       
       <CakeModel />
       
@@ -175,7 +290,7 @@ export default function Hero() {
   return (
     <section id="home" ref={containerRef} className={styles.hero}>
       <div className={styles.canvasWrapper}>
-        <Canvas camera={{ position: [0, 0, 7], fov: 45 }}>
+        <Canvas camera={{ position: [0, 0, 7], fov: 45 }} gl={{ antialias: true, alpha: true }}>
           <Scene />
         </Canvas>
       </div>
