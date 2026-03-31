@@ -18,10 +18,10 @@ const revealTexts = [
 ]
 
 const featureTexts = [
-  "Premium Ingredients",
-  "Handcrafted with Love",
-  "Amritsar's Favorite",
-  "Since 2015"
+  { text: "Premium", sub: "Ingredients" },
+  { text: "Handcrafted", sub: "with Love" },
+  { text: "Amritsar's", sub: "Favorite" },
+  { text: "Since", sub: "2015" }
 ]
 
 export default function TextReveal() {
@@ -77,14 +77,14 @@ export default function TextReveal() {
         </div>
 
         <div className={styles.features}>
-          {featureTexts.map((text, i) => (
+          {featureTexts.map((item, i) => (
             <div 
               key={i} 
               className={styles.featureItem}
               style={{ '--i': i }}
             >
-              <span className={styles.featureIcon}>✦</span>
-              <span>{text}</span>
+              <span className={styles.featureText}>{item.text}</span>
+              <span className={styles.featureSub}>{item.sub}</span>
             </div>
           ))}
         </div>
