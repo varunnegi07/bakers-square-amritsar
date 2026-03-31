@@ -4,11 +4,6 @@
   background: var(--color-bg);
 }
 
-.mainLoading {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .mainLoaded {
   opacity: 1;
   pointer-events: auto;
@@ -16,12 +11,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .heroSection {
@@ -33,18 +24,5 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-}
-
-.heroCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.heroCanvas canvas {
-  width: 100%;
-  height: 100%;
+  background: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 100%);
 }

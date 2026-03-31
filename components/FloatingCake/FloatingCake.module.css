@@ -1,0 +1,108 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.cakeWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 250px;
+}
+
+.cake {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.tier {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color);
+  border-radius: 8px;
+  box-shadow: 
+    inset 0 -10px 20px rgba(0,0,0,0.2),
+    0 5px 20px rgba(0,0,0,0.3);
+}
+
+.tier .top {
+  position: absolute;
+  top: -5px;
+  left: 5%;
+  width: 90%;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cherry {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle at 30% 30%, #FF4444, #DC143C);
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.cherry::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 2px;
+  height: 12px;
+  background: #228B22;
+  transform: translateX(-50%) rotate(-15deg);
+  border-radius: 2px;
+}
+
+.candle {
+  position: absolute;
+  width: 6px;
+  height: 35px;
+  background: linear-gradient(to right, #FF8888, #FF6B6B);
+  border-radius: 3px;
+}
+
+.flame {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 14px;
+  background: radial-gradient(ellipse at bottom, #FFD93D, #FF6B6B);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker 0.3s infinite alternate;
+  box-shadow: 
+    0 0 10px #FFD93D,
+    0 0 20px #FF6B6B;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.1); }
+}
+
+.plate {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 15px;
+  background: linear-gradient(to bottom, #E8E8E8, #A0A0A0);
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
