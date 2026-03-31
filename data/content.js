@@ -125,7 +125,7 @@ export const foodAndDrink = {
     { name: "Crispy Manchurian", description: "Perfect balance of textures and tastes" }
   ],
   beverages: [
-    { name: " Thick Lassi", description: "Traditional frothy yogurt drink" },
+    { name: "Thick Lassi", description: "Traditional frothy yogurt drink" },
     { name: "Fresh Juices", description: "Seasonal fruits, freshly blended" },
     { name: "Hot Beverages", description: "Coffee, tea, and hot chocolate" }
   ]

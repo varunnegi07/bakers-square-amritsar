@@ -58,23 +58,25 @@ export default function Home() {
   }
 
   return (
-    <main ref={mainRef} className={styles.main}>
-      <Preloader onComplete={handlePreloaderComplete} />
+    <>
+      {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       
-      <section className={styles.heroSection}>
-        <div className={styles.heroCanvas}>
-          <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-            <HeroScene />
-          </Canvas>
-        </div>
-        <HeroContent />
-      </section>
+      <main ref={mainRef} className={`${styles.main} ${!isLoading ? styles.mainLoaded : ''}`}>
+        <section className={styles.heroSection}>
+          <div className={styles.heroCanvas}>
+            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+              <HeroScene />
+            </Canvas>
+          </div>
+          <HeroContent />
+        </section>
 
-      <HorizontalScroll />
-      <TextReveal />
-      <LocationSection />
-      <ContactSection />
-      <Footer />
-    </main>
+        <HorizontalScroll />
+        <TextReveal />
+        <LocationSection />
+        <ContactSection />
+        <Footer />
+      </main>
+    </>
   )
 }
