@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Text3D, Center } from '@react-three/drei'
-import * as THREE from 'three'
+import { Float, Text } from '@react-three/drei'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { businessInfo, floatingElements } from '@/data/content'
@@ -12,7 +11,7 @@ import styles from './Hero.module.css'
 gsap.registerPlugin(ScrollTrigger)
 
 function FloatingBakeryItem({ emoji, index }) {
-  const ref = useRef()
+  const groupRef = useRef()
   const [position] = useState(() => ({
     x: (Math.random() - 0.5) * 8,
     y: (Math.random() - 0.5) * 8,
@@ -20,19 +19,20 @@ function FloatingBakeryItem({ emoji, index }) {
   }))
   
   useFrame((state) => {
-    if (ref.current) {
-      ref.current.position.y = position.y + Math.sin(state.clock.elapsedTime * 0.5 + index) * 0.5
-      ref.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3 + index) * 0.2
-      ref.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.2 + index) * 0.2
+    if (groupRef.current) {
+      groupRef.current.position.y = position.y + Math.sin(state.clock.elapsedTime * 0.5 + index) * 0.5
+      groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3 + index) * 0.2
+      groupRef.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.2 + index) * 0.2
     }
   })
 
   return (
     <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
-      <mesh ref={ref} position={[position.x, position.y, position.z]} scale={0.4}>
-        <textGeometry args={[emoji, { fontSize: 1, height: 0.1 }]} />
-        <meshStandardMaterial color="#D4A574" />
-      </mesh>
+      <group ref={groupRef} position={[position.x, position.y, position.z]}>
+        <Text scale={0.4} fontSize={1} color="#D4A574" anchorX="center" anchorY="middle">
+          {emoji}
+        </Text>
+      </group>
     </Float>
   )
 }
