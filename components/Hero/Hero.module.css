@@ -10,6 +10,22 @@
   background: radial-gradient(ellipse at center bottom, #1a1510 0%, #000000 70%);
 }
 
+.cakeImage {
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  height: 70%;
+  background-image: url('/cake-background.jpeg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  z-index: 0;
+  opacity: 0.9;
+}
+
 .canvasWrapper {
   position: absolute;
   inset: 0;

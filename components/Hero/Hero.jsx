@@ -37,69 +37,6 @@ function FloatingBakeryItem({ emoji, index }) {
   )
 }
 
-function CakeModel() {
-  const groupRef = useRef()
-  
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.elapsedTime * 0.1
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
-    }
-  })
-
-  return (
-    <Float speed={1.2} rotationIntensity={0.15} floatIntensity={0.3}>
-      <group ref={groupRef} scale={0.6}>
-        {/* Base tier - chocolate */}
-        <mesh position={[0, -0.9, 0]}>
-          <cylinderGeometry args={[1.4, 1.5, 0.6, 32]} />
-          <meshStandardMaterial color="#5D3A1A" roughness={0.3} />
-        </mesh>
-        
-        {/* Second tier - vanilla */}
-        <mesh position={[0, -0.35, 0]}>
-          <cylinderGeometry args={[1.1, 1.3, 0.5, 32]} />
-          <meshStandardMaterial color="#F5DEB3" roughness={0.3} />
-        </mesh>
-        
-        {/* Third tier - pink */}
-        <mesh position={[0, 0.1, 0]}>
-          <cylinderGeometry args={[0.85, 1.1, 0.45, 32]} />
-          <meshStandardMaterial color="#FFB6C1" roughness={0.3} />
-        </mesh>
-        
-        {/* Top tier - white */}
-        <mesh position={[0, 0.5, 0]}>
-          <cylinderGeometry args={[0.6, 0.85, 0.4, 32]} />
-          <meshStandardMaterial color="#FFF5EE" roughness={0.3} />
-        </mesh>
-        
-        {/* Cherry on top */}
-        <mesh position={[0, 0.85, 0]}>
-          <sphereGeometry args={[0.15, 16, 16]} />
-          <meshStandardMaterial color="#DC143C" roughness={0.3} />
-        </mesh>
-        
-        {/* Candles */}
-        {[0.3, -0.25, 0.1].map((x, i) => (
-          <mesh key={i} position={[x, 0.75, 0]}>
-            <cylinderGeometry args={[0.03, 0.03, 0.4, 8]} />
-            <meshStandardMaterial color="#FF6B6B" />
-          </mesh>
-        ))}
-        
-        {/* Gold decorations */}
-        {[-0.7, 0, 0.7].map((x, i) => (
-          <mesh key={i} position={[x, -0.55, 0]} rotation={[Math.PI/2, 0, 0]}>
-            <torusGeometry args={[0.05, 0.02, 8, 16]} />
-            <meshStandardMaterial color="#FFD700" metalness={0.8} />
-          </mesh>
-        ))}
-      </group>
-    </Float>
-  )
-}
-
 function Scene() {
   return (
     <>
@@ -107,8 +44,6 @@ function Scene() {
       <directionalLight position={[5, 5, 5]} intensity={0.8} />
       <directionalLight position={[-5, 3, -5]} intensity={0.3} color="#FFD93D" />
       <pointLight position={[0, 2, 4]} intensity={0.6} color="#FFB6C1" />
-      
-      <CakeModel />
       
       {floatingElements.slice(0, 8).map((emoji, i) => (
         <FloatingBakeryItem key={i} emoji={emoji} index={i} />
@@ -147,6 +82,8 @@ export default function Hero() {
 
   return (
     <section id="home" ref={containerRef} className={styles.hero}>
+      <div className={styles.cakeImage} />
+      
       <div className={styles.canvasWrapper}>
         <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
           <Scene />
